@@ -1,0 +1,29 @@
+name: lab2-task1
+
+services:
+  worker1:
+    build:
+      context: ./worker1
+    volumes:
+      - type: bind
+        source: ./data
+        target: /var/data
+        read_only: true
+      - type: bind
+        source: ./result-1
+        target: /var/result
+
+  worker2:
+    build:
+      context: ./worker2
+    depends_on:
+      worker1:
+        condition: service_completed_successfully
+    volumes:
+      - type: bind
+        source: ./result-1
+        target: /var/data
+        read_only: true
+      - type: bind
+        source: ./result
+        target: /var/result

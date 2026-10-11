@@ -1,0 +1,11 @@
+# Python temporary files and virtual environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Generated output files
+/result-1/*
+!/result-1/.gitkeep
+/result/*
+!/result/.gitkeep
